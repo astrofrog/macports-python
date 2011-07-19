@@ -1,0 +1,10 @@
+body {
+	color: #323232;
+	background-color: #d5d5d5;
+	padding: 20px;
+	font: 12px "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+code, pre {
+	color: #244721;
+}

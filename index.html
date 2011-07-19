@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <link href='style.css' rel='stylesheet' type="text/css">
+    <title></title>
+  </head>
+  <body>
+    <h1>
+      Tom's recommended Python installation on Mac - 10 easy steps
+    </h1>
+    <h2>
+      Installation
+    </h2>
+    <ol>
+      <li>
+        <p>
+          Ensure that <a href="http://developer.apple.com/xcode/">XCode</a> 3 or 4 is installed (should be on the install DVDs for your Mac). If you like to live on the bleeding edge, you can purchase XCode 4 from the Mac App Store. To check if XCode is installed properly, you can type <code>gcc</code> in the command-line. If you get <code>gcc: command not found</code>, then XCode is not properly installed.
+        </p>
+      </li>
+      <li>
+        <p>
+          Download the DMG image for MacPorts from <a href="http://www.macports.org/install.php">here</a> - be sure to pick the correct one for your MacOS X version. Mount the disk image and run the installer. Note that if needed, it is possible to install MacPorts without root/admin privileges - see <a href="https://trac.macports.org/wiki/InstallingMacPorts#InstallMacPortsfromsourceasanunprivilegednon-rootuser">here</a> for more details.
+        </p>
+      </li>
+      <li>Go to the terminal and run:
+        <p>
+          <code>sudo port selfupdate</code>
+        </p>
+      </li>
+      <li>
+        <p>
+          To install most of the basic Python packages, run:
+        </p>
+        <p>
+          <code>sudo port install py27-matplotlib py27-numpy py27-scipy py27-ipython</code>
+        </p>
+        <p>
+          Note that this will probably take several hours, and is best done overnight.
+        </p>
+      </li>
+      <li>
+        <p>
+          To install Astronomy packages, use for example:
+        </p>
+        <p>
+          <code>sudo port install py27-pyfits py27-pywcs py27-atpy py27-aplpy</code>
+        </p>
+        <p>
+          MacPorts will automatically take care of any dependencies!
+        </p>
+      </li>
+    </ol>
+    <h2>
+      Configuration
+    </h2>
+    <ol start="6">
+      <li>
+        <p>
+          If it does not already exist, create a folder called <code>.matplotlib</code> in your home directory and copy the default <code>matplotlibrc</code> file to it:
+        </p>
+        <p>
+          <code>cp /opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc ~/.matplotlib/</code>
+        </p>
+      </li>
+      <li>
+        <p>
+          Edit <code>.matplotlib/matplotlibrc</code> and change the following line
+        </p>
+        <p>
+          <code>backend : Agg</code>
+        </p>
+        <p>
+          to
+        </p>
+        <p>
+          <code>backend : MacOSX</code>
+        </p>
+        <p>
+          This ensures that when you use Matplotlib interactively, a window will pop up. Optionally, you can uncomment and set the <code>image.origin</code> and <code>image.interpolation</code> lines to
+        </p>
+        <p>
+          <code>image.origin : lower</code><br>
+          <code>image.interpolation : nearest</code>
+        </p>
+        <p>
+          These settings are likely to be the most useful for plotting astronomical data.
+        </p>
+      </li>
+      <li>
+        <p>
+          Make this Python installation the default:
+        </p>
+        <p>
+          <code>sudo port select --set python python27</code><br>
+          <code>sudo port select --set ipython ipython27</code>
+        </p>
+        <p>
+          Note that this is optional - you can also invoke this Python installation by using <code>python2.7</code> and <code>ipython-2.7</code>.
+        </p>
+      </li>
+    </ol>
+    <h2>
+      Searching for packages
+    </h2>
+    <ol start="9">
+      <li>
+        <p>
+          To check if a package is available through MacPorts, you can do:
+        </p>
+        <pre>
+$ port search pyfits
+
+py25-pyfits @2.4.0 (python, science)
+Python interface to FITS formatted files
+
+py26-pyfits @2.4.0 (python, science)
+Python interface to FITS formatted files
+
+py27-pyfits @2.4.0 (python, science)
+Python interface to FITS formatted files
+
+Found 3 ports.
+</pre>
+        <p>
+          Be sure to install the one for the correct Python version (<code>py27-*</code> if you've been using the above instructions).
+        </p>
+      </li>
+    </ol>
+    <h2>
+      Installing packages not in macports
+    </h2>
+    <ol start="10">
+      <li>
+        <p>
+          When installing packages not in MacPorts, simply use:
+        </p>
+        <p>
+          <code>python setup.py install --user</code>
+        </p>
+        <p>
+          (do not omit <code>--user</code> and use <code>sudo</code>). This will place user installed packages in <code>~/Library/Python/2.7/lib/python/site-packages</code> where they will automatically be picked up by the Python installation, without messing up the MacPorts file structure.
+        </p>
+      </li>
+    </ol>
+    <h2>Appendix: Available Python Astronomy Packages</h2>
+<pre>
+      py27-aplpy @0.9.6 (python, science)
+          The Astronomical Plotting Library in Python
+
+      py27-asciitable @0.6.0 (python, science)
+          An extensible ASCII table reader and writer
+
+      py27-atpy @0.9.5.1 (python, science)
+          ATpy: Astronomical Tables in Python
+
+      py27-idlsave @0.9.7 (python, science)
+          IDLSave - a python module to read IDL 'save' files
+
+      py27-montage @0.9.3 (python, science)
+          Montage python wrapper
+
+      py27-pyavm @0.1.4 (python, science)
+          Pure-Python AVM library
+
+      py27-pyfits @2.4.0 (python, science)
+          Python interface to FITS formatted files
+
+      py27-pyregion @1.0.1 (python, science)
+          pyregion is a Python module to parse ds9 region files
+
+      py27-pywcs @1.10-4.7 (python, science)
+          pywcs is a set of routines for handling the FITS WCS standard
+
+      py27-vo @0.6 (python, science)
+          A Python library to parse, validate and generate VOTable XML files.
+</pre>
+
+  </body>
+</html>
