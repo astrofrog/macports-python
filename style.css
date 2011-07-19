@@ -1,10 +1,18 @@
 body {
 	color: #323232;
-	background-color: #d5d5d5;
+	background-color: #dedede;
 	padding: 20px;
 	font: 12px "Lucida Grande", Lucida, Verdana, sans-serif;
+	border: 30px solid #777;
+	margin: 0;
 }
 
 code, pre {
 	color: #244721;
+}
+
+#footnote {
+	text-align: center;
+	font-size: 10px;
+	color: rgba(0,0,0,0.5);
 }
