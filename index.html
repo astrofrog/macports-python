@@ -124,6 +124,22 @@ Found 3 ports.
         <p>
           Be sure to install the one for the correct Python version (<code>py27-*</code> if you've been using the above instructions).
         </p>
+        <p>
+           Before installing the package, you can check what <i>variants</i> are available:
+        </p>
+        <pre>
+$ port variants py27-aplpy
+py27-aplpy has the variants:
+[+]avm: Include support for AVM meta-data
+[+]ds9: Include support for DS9 region files
+  montage: Include support for Montage reprojection
+[+]rgb: Include support for RGB images
+  universal: Build for multiple architectures
+</pre>
+         <p>
+            Variants listed with <code>[+]</code> are installed by default. To remove a default variant, use <code>-variant</code>. To include a variant not installed by default, use <code>+variant</code>. For example, the following will install APLpy with support for Montage, but not for RGB images:
+         </p>
+         <code>sudo port install py27-aplpy +montage -rgb</code>
       </li>
     </ol>
     <h2>
