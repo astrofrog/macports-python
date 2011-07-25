@@ -153,13 +153,13 @@ py27-aplpy has the variants:
     <ol start="10">
       <li>
         <p>
-          When installing packages not in MacPorts, simply use:
+          When installing packages not in MacPorts, first make sure that you remove your <code>.pydistutils</code> file if you have one, then simply use:
         </p>
         <p>
           <code>python setup.py install --user</code>
         </p>
         <p>
-          (do not omit <code>--user</code> and use <code>sudo</code>). This will place user installed packages in <code>~/Library/Python/2.7/lib/python/site-packages</code> where they will automatically be picked up by the Python installation, without messing up the MacPorts file structure.
+          (do not omit <code>--user</code> and do not use <code>sudo</code>). This will place user installed packages in <code>~/Library/Python/2.7/lib/python/site-packages</code> where they will automatically be picked up by the Python installation, without messing up the MacPorts file structure.
         </p>
       </li>
     </ol>
