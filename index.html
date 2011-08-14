@@ -177,6 +177,9 @@ py27-aplpy has the variants:
         <p>
           (do not omit <code>--user</code> and do not use <code>sudo</code>). This will place user installed packages in <code>~/Library/Python/2.7/lib/python/site-packages</code> where they will automatically be picked up by the Python installation, without messing up the MacPorts file structure. Note that you can also install packages in a similar way using <code>easy_install-2.7</code> and <code>pip-2.7</code> by specifying the <code>--user</code> option.
         </p>
+        <p>
+           The reason for installing packages with --user is that if instead you install packages using <code>sudo python setup.py install</code>, the packages will be installed inside the MacPorts tree, but MacPorts won't be aware of it, so this could cause issues in future if the package is installed via MacPorts. As a rule of thumb, don't ever install anything into <code>/opt/local/</code> other than via the <code>port</code> command. If you did mistakenly install packages to the MacPorts directory, just go to <code>/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages</code> and remove the files relating to the package you installed.
+        </p>
       </li>
     </ol>
     <h2>Appendix: Available Python Astronomy Packages</h2>
